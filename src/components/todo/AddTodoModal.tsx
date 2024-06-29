@@ -11,11 +11,16 @@ import {
 } from '../ui/dialog';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
+import { useAppDispatch } from '@/redux/hook/hook';
+import { addTodo } from '@/redux/features/todoSlice';
+import AddFilter from './AddFilter';
 
 const AddTodoModal = () => {
   const [task, setTask] = useState('');
   const [description, setDescription] = useState('');
-
+  const [radioItem, setRadioItem] = useState('')
+  const dispatch = useAppDispatch()
+  console.log(radioItem);
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
 
@@ -25,7 +30,10 @@ const AddTodoModal = () => {
       id: randomString,
       title: task,
       description: description,
+      priority: radioItem
     };
+
+    dispatch(addTodo(taskDetails))
   };
 
   return (
@@ -63,6 +71,12 @@ const AddTodoModal = () => {
                 id="description"
                 className="col-span-3"
               />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="priority" className="text-right">
+                Set Priority
+              </Label>
+              <AddFilter setRadioItem={setRadioItem} />
             </div>
           </div>
           <div className="flex justify-end">

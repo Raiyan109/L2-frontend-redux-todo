@@ -6,9 +6,10 @@ type TTodoCardProps = {
   title: string;
   description: string;
   isCompleted?: boolean;
+  priority: ['high', 'medium', 'low'];
 };
 
-const TodoCard = ({ title, description, id, isCompleted }: TTodoCardProps) => {
+const TodoCard = ({ title, description, id, isCompleted, priority }: TTodoCardProps) => {
   const toggleState = () => {
     console.log('Toggle');
   };
@@ -22,6 +23,7 @@ const TodoCard = ({ title, description, id, isCompleted }: TTodoCardProps) => {
         id="complete"
       />
       <p className="font-semibold">{title}</p>
+      <p className="font-semibold">{priority}</p>
       {/* <p>Time</p> */}
       <div>
         {isCompleted ? (
