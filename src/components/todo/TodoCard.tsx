@@ -6,7 +6,7 @@ type TTodoCardProps = {
   title: string;
   description: string;
   isCompleted?: boolean;
-  priority: ['high', 'medium', 'low'];
+  priority: string;
 };
 
 const TodoCard = ({ title, description, id, isCompleted, priority }: TTodoCardProps) => {

@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 type TTodo = {
     title: string;
     description: string;
-    priority: ['high', 'medium', 'low']
+    priority: string;
     isCompleted?: boolean
 }
 
